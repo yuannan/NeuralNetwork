@@ -53,7 +53,7 @@ public class Maths {
                 
         for(int row = 0; row < rows; row++){
             for(int col = 0; col < cols; col++){
-                ranArray[row][col] = Math.random();
+                ranArray[row][col] = Math.random()-0.5;
                 //System.out.println("row: "+ row + " col: "+ col+" value: " + ranArray[row][col]);
             }
         }
