@@ -19,54 +19,50 @@ public class Network {
     ArrayList<ArrayList> results = new ArrayList(resultsSize);
     boolean debug = false;
     boolean trained = false;
+    
     //init constants
     Matrix hiddenWeights, outputWeights; //weights
     Matrix DhiddenWeights, DoutputWeights; //delta weights
     Matrix inputLayer, hiddenIn, hiddenOut, outputIn, outputOut; //layer values
     int in, hidden, out;
-    public double output;
-    public double error;
+    
+    public double[] output;
+    public double[] error;
     
     //init of a 3 layer network with weights
-    public Network(Matrix input2Hidden, Matrix hidden2Out, int inSize, int hiddenSize, int outSize){
+    public Network(Matrix inputToHidden, Matrix hiddenToOut, int inSize, int hiddenSize, int outSize){
         //setting network constants
-        hiddenWeights = input2Hidden;
-        outputWeights = hidden2Out;
-        in = inSize;
-        hidden = hiddenSize;
-        out = outSize;
+        this.initConstants(inSize, hiddenSize, outSize);
+        hiddenWeights = inputToHidden;
+        outputWeights = hiddenToOut;
         
         //validating network weight sizes
         if(hiddenWeights.rows != in || hiddenWeights.cols != hidden) System.out.println("Inproper hidden weight size!");
         if(outputWeights.rows != hidden  || outputWeights.cols != out) System.out.println("Inproper output weight size!");
-        
-        this.initDelta();
     }
     
     //init of a 3 layer network with random weights
     public Network(int inSize, int hiddenSize, int outSize){
-        in = inSize;
-        hidden = hiddenSize;
-        out = outSize;
-        
+        this.initConstants(inSize, hiddenSize, outSize);
         //init weights
         hiddenWeights = new Matrix(Maths.fillRandom(in,hidden));
         outputWeights = new Matrix(Maths.fillRandom(hidden, out));
-        
-        this.initDelta();
     }
     
-    public final void initDelta(){
+    public final void initConstants(int i, int h, int o){
+        in = i;
+        hidden = h;
+        out = o;
         DhiddenWeights = new Matrix(in, hidden);
         DoutputWeights = new Matrix(hidden,out);
-        for(int i = 0; i < resultsSize; i++){
+        for(int r = 0; r < resultsSize; r++){
             results.add(new ArrayList());
         }
+        output = new double[out];
+        error = new double[out];
     }
     
-    
-    public void compute(double[] inArray, double target){
-        
+    public void compute(double[] inArray, double[] target){
         //takes in the input
         inputLayer = new Matrix(inArray);
                 
@@ -80,8 +76,7 @@ public class Network {
         outputIn = hiddenOut.mltp(outputWeights);
         outputOut = outputIn.mutate("act");
         
-        //prints the output matrix
-        
+        //debug output
         if(debug){
             System.out.println("Weights");
             hiddenWeights.debugOutput();
@@ -100,36 +95,38 @@ public class Network {
             outputOut.debugOutput();            
         }
         
-        output = outputOut.get(0, 0);
-        error = 0.5*Math.pow((target - output),2); //error = (t-o)^2 / 2
+        output = outputOut.self[0];
+        for(int n = 0; n < out; n++){
+            error[n] = 0.5*Math.pow((target[n] - output[n]),2); //error = (t-o)^2 / 2
+        }
     }
     
-    public void train(double[] input, double target, double rate, double mass){
+    public void train(double[] input, double[] target, double rate, double mass){
         this.compute(input, target);
-        System.out.println("O: " + output + " E: " + error);
-        double dEdO = output - target;
-        double dOdI = output * (1 - output);
-        double dEdI = dEdO * dOdI;
         
-        //finding delta for hidden -> output
-        for(int outNode = 0; outNode < out; outNode++){
+        for (int n = 0; n < out; n++){
+            System.out.println("O: " + output[n] + " E: " + error[n]);
+            double dOdnO = output[n] - target[n];
+            double dnOdI = output[n] * (1 - output[n]);
+            double dOdI = dOdnO * dnOdI;
+            
             for(int hiddenNode = 0; hiddenNode < hidden; hiddenNode++){
+                //finding delta for hidden -> output
                 double dIdW = hiddenOut.get(0,hiddenNode);
-                double delta = dEdI*dIdW;
-                DoutputWeights.set(hiddenNode, outNode, delta);
+                double deltaH = dOdI*dIdW;
+                DoutputWeights.set(hiddenNode, n, deltaH);
+
+                //finding delta for input -> hidden        
+                double dIdHo = outputWeights.get(hiddenNode, 0);
+                double dHodHi = hiddenOut.get(0, hiddenNode) * (1 - hiddenOut.get(0, hiddenNode));            
+                for(int inputNode = 0; inputNode < in; inputNode++){
+                    double dHidw = inputLayer.get(0, inputNode);
+                    double deltaI = dOdI*dIdHo*dHodHi*dHidw;
+                    DhiddenWeights.set(inputNode,hiddenNode,deltaI);
+                }
             }
         }
         
-        //finding delta for input -> hidden        
-        for(int hiddenNode = 0; hiddenNode < hidden; hiddenNode++){
-            double dIdHo = outputWeights.get(hiddenNode, 0);
-            double dHodHi = hiddenOut.get(0, hiddenNode) * (1 - hiddenOut.get(0, hiddenNode));            
-            for(int inputNode = 0; inputNode < in; inputNode++){
-                double dHidw = inputLayer.get(0, inputNode);
-                double delta = dEdI*dIdHo*dHodHi*dHidw;
-                DhiddenWeights.set(inputNode,hiddenNode,delta);
-            }
-        }
         //finding momentum
         if(trained){
             int prevIndex = (resultsCount + 99) % 100;
@@ -140,7 +137,7 @@ public class Network {
             DoutputWeights = DoutputWeights.add(prevOutput.mltp(mass));
             DhiddenWeights = DhiddenWeights.add(prevHidden.mltp(mass));
         } else{
-            trained = true;
+            trained = false;
         }
 
         //applying learning rate

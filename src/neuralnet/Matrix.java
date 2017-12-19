@@ -94,6 +94,11 @@ public class Matrix {
         self[row][col] = in;
     }
     
+    //increment a singular item
+    public void inc(int row, int col, double in){
+        self[row][col] += in;
+    }
+    
     //sets a row of the matrix
     public void setRow(int row, double[] in){
         if(in.length == cols){
