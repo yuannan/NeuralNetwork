@@ -20,6 +20,7 @@ public class Network {
     ArrayList<ArrayList<Matrix>> results = new ArrayList(resultsSize);
     boolean debug = false;
     boolean trained = false;
+    int trainingCount = 0;
     
     //init constants
     Matrix hiddenWeights, outputWeights; //weights
@@ -114,7 +115,7 @@ public class Network {
         this.compute(input, target);
         
         for (int n = 0; n < out; n++){
-            System.out.println("O: " + output[n] + " E: " + error[n]);
+            if(debug)System.out.println("O: " + output[n] + " E: " + error[n]);
             double dOdnO = output[n] - target[n];
             double dnOdI = output[n] * (1 - output[n]);
             double dOdI = dOdnO * dnOdI;
@@ -178,5 +179,11 @@ public class Network {
         resultsCount++;
         resultsCount = resultsCount % resultsSize;
         
-    }    
+        //increment samples trained
+        trainingCount++;
+    }
+    
+    public int getTrainingCount(){
+        return trainingCount;
+    }
 }

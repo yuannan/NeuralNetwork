@@ -95,6 +95,10 @@ public class Interface extends javax.swing.JFrame {
         error2 = new javax.swing.JTextField();
         inputFileSet1Path = new javax.swing.JTextField();
         inputFileSet2Path = new javax.swing.JTextField();
+        findSizeButton = new javax.swing.JButton();
+        sizeOutputBox = new javax.swing.JTextField();
+        trainingCountButton = new javax.swing.JButton();
+        trainingCountOutputBox = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,7 +154,7 @@ public class Interface extends javax.swing.JFrame {
 
         autodataCheckbox.setText("autoData");
 
-        roundsInput.setText("100");
+        roundsInput.setText("1000");
 
         trainingInputLabel.setText("TRAINING INPUTS");
 
@@ -206,6 +210,20 @@ public class Interface extends javax.swing.JFrame {
         inputFileSet1Path.setText("set1.txt");
 
         inputFileSet2Path.setText("set2.txt");
+
+        findSizeButton.setText("Size");
+        findSizeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findSizeButtonActionPerformed(evt);
+            }
+        });
+
+        trainingCountButton.setText("Trained");
+        trainingCountButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trainingCountButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -269,9 +287,6 @@ public class Interface extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(trainingHeaderLabel)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(error2, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(output2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(autodataCheckbox)
                                         .addGap(18, 18, 18)
@@ -282,7 +297,19 @@ public class Interface extends javax.swing.JFrame {
                                         .addComponent(inputFileSet1Path, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(inputFileSet2Path, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 80, Short.MAX_VALUE)))))
+                                .addGap(0, 80, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(error2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(output2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(trainingCountOutputBox, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .addComponent(sizeOutputBox))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(findSizeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(trainingCountButton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -330,21 +357,26 @@ public class Interface extends javax.swing.JFrame {
                             .addComponent(newNetworkButton)
                             .addComponent(hiddenFileButton)
                             .addComponent(hiddenFileBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(34, 34, 34)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(outputLabel)
                     .addComponent(output0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(output1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(output2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(output2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(findSizeButton)
+                    .addComponent(sizeOutputBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(errorLabel)
                     .addComponent(error0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(error1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(error2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                    .addComponent(error2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(trainingCountButton)
+                        .addComponent(trainingCountOutputBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(messageLabel)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -392,7 +424,7 @@ public class Interface extends javax.swing.JFrame {
             String path = inputBoxes[lang].getText();
             try{
                 BufferedReader br = new BufferedReader(new FileReader(path));
-                String line = "";
+                String line;
                 while((line = br.readLine()) != null){
                     double[] wordInDouble = this.charsToDouble(line.toCharArray());
                     langInDouble.add(wordInDouble);
@@ -403,7 +435,10 @@ public class Interface extends javax.swing.JFrame {
             allSets.add(langInDouble);
         }
         
-        //creation of training sets
+        //clear sets
+        trainingInput.clear();
+        trainingOutput.clear();
+        //populating new sets
         for(int wordSet = 0; wordSet < Integer.valueOf(roundsInput.getText()); wordSet++){
             //randomly pick one language
             int lang = (int)(Math.random() * outputNodes);
@@ -464,6 +499,20 @@ public class Interface extends javax.swing.JFrame {
     private void inputFileSet0PathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputFileSet0PathActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputFileSet0PathActionPerformed
+
+    private void findSizeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findSizeButtonActionPerformed
+        // TODO add your handling code here:
+        int amountOfWeights = 0;
+        amountOfWeights += inputNodes * hiddenNodes;
+        amountOfWeights += hiddenNodes * outputNodes;
+        sizeOutputBox.setText(String.valueOf(amountOfWeights));
+    }//GEN-LAST:event_findSizeButtonActionPerformed
+
+    private void trainingCountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trainingCountButtonActionPerformed
+        // TODO add your handling code here:
+        int trainingCount = net.getTrainingCount();
+        trainingCountOutputBox.setText(String.valueOf(trainingCount));
+    }//GEN-LAST:event_trainingCountButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -553,6 +602,7 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JTextField error1;
     private javax.swing.JTextField error2;
     private javax.swing.JLabel errorLabel;
+    private javax.swing.JButton findSizeButton;
     private javax.swing.JTextField hiddenFileBox;
     private javax.swing.JButton hiddenFileButton;
     private javax.swing.JTextField inputFileSet0Path;
@@ -577,7 +627,10 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JTextField rateInput;
     private javax.swing.JLabel rateInputLabel;
     private javax.swing.JTextField roundsInput;
+    private javax.swing.JTextField sizeOutputBox;
     private javax.swing.JButton trainButton;
+    private javax.swing.JButton trainingCountButton;
+    private javax.swing.JTextField trainingCountOutputBox;
     private javax.swing.JLabel trainingHeaderLabel;
     private javax.swing.JLabel trainingInputLabel;
     // End of variables declaration//GEN-END:variables
