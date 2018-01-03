@@ -16,7 +16,8 @@ public class Network {
     //settings up tracker
     int resultsSize = 100;
     int resultsCount = 0;
-    ArrayList<ArrayList> results = new ArrayList(resultsSize);
+    int memory = 10;
+    ArrayList<ArrayList<Matrix>> results = new ArrayList(resultsSize);
     boolean debug = false;
     boolean trained = false;
     
@@ -24,6 +25,7 @@ public class Network {
     Matrix hiddenWeights, outputWeights; //weights
     Matrix DhiddenWeights, DoutputWeights; //delta weights
     Matrix inputLayer, hiddenIn, hiddenOut, outputIn, outputOut; //layer values
+    Matrix bInput, bHidden, bOutput; // bias values
     int in, hidden, out;
     
     public double[] output;
@@ -50,33 +52,40 @@ public class Network {
     }
     
     public final void initConstants(int i, int h, int o){
+        //init constant sizes
         in = i;
         hidden = h;
         out = o;
+        //delta weights
         DhiddenWeights = new Matrix(in, hidden);
         DoutputWeights = new Matrix(hidden,out);
+        //bias for nodes
+        //bInput = new Matrix(Maths.fillRandom(1, in));
+        bInput = new Matrix(1,in);
+        bHidden = new Matrix(Maths.fillRandom(1, hidden));
+        bOutput = new Matrix(Maths.fillRandom(1, out));
+        //init result array
         for(int r = 0; r < resultsSize; r++){
             results.add(new ArrayList());
         }
+        //init output arrays
         output = new double[out];
         error = new double[out];
     }
     
     public void compute(double[] inArray, double[] target){
-        //takes in the input
-        inputLayer = new Matrix(inArray);
+        //input
+        inputLayer = (new Matrix(inArray)).add(bInput);
                 
-        //calculates the hidden layer
+        //hidden
         hiddenIn = inputLayer.mltp(hiddenWeights);
-        
-        //squashes the hidden results
-        hiddenOut = hiddenIn.mutate("act");        
+        hiddenOut = (hiddenIn.add(bHidden)).mutate("act");
                 
-        //calc outputin
+        //output
         outputIn = hiddenOut.mltp(outputWeights);
-        outputOut = outputIn.mutate("act");
+        outputOut = (outputIn.add(bOutput)).mutate("act");
         
-        //debug output
+        //debug outputs
         if(debug){
             System.out.println("Weights");
             hiddenWeights.debugOutput();
@@ -84,7 +93,7 @@ public class Network {
             System.out.println("Input");
             inputLayer.debugOutput();
             System.out.println("Hidden in");
-            hiddenIn.debugOutput();    
+            hiddenIn.debugOutput();
             System.out.println("Hidden act");
             hiddenOut.debugOutput();
             System.out.println("Output In");
@@ -92,7 +101,7 @@ public class Network {
             System.out.println("Output act");
             outputOut.debugOutput();
             System.out.println("Compute out");
-            outputOut.debugOutput();            
+            outputOut.debugOutput();
         }
         
         output = outputOut.self[0];
@@ -109,16 +118,21 @@ public class Network {
             double dOdnO = output[n] - target[n];
             double dnOdI = output[n] * (1 - output[n]);
             double dOdI = dOdnO * dnOdI;
+            //updating bias for output
+            bOutput.inc(0,n,-(dOdI*(rate/2)));
             
+            //finding delta for each hidden -> output node
             for(int hiddenNode = 0; hiddenNode < hidden; hiddenNode++){
-                //finding delta for hidden -> output
                 double dIdW = hiddenOut.get(0,hiddenNode);
                 double deltaH = dOdI*dIdW;
                 DoutputWeights.set(hiddenNode, n, deltaH);
-
-                //finding delta for input -> hidden        
+                
                 double dIdHo = outputWeights.get(hiddenNode, 0);
-                double dHodHi = hiddenOut.get(0, hiddenNode) * (1 - hiddenOut.get(0, hiddenNode));            
+                double dHodHi = hiddenOut.get(0, hiddenNode) * (1 - hiddenOut.get(0, hiddenNode));
+                
+                bHidden.inc(0,hiddenNode,-(dOdI*dIdHo*dHodHi*(rate/2)));
+                        
+                //finding delta for each input -> hidden node
                 for(int inputNode = 0; inputNode < in; inputNode++){
                     double dHidw = inputLayer.get(0, inputNode);
                     double deltaI = dOdI*dIdHo*dHodHi*dHidw;
@@ -129,28 +143,35 @@ public class Network {
         
         //finding momentum
         if(trained){
-            int prevIndex = (resultsCount + 99) % 100;
-            if(debug)System.out.println(resultsCount + " " + prevIndex);
-            ArrayList prevResults = (ArrayList) results.get(prevIndex);
-            Matrix prevOutput = (Matrix) prevResults.get(0);
-            Matrix prevHidden = (Matrix) prevResults.get(1);
-            DoutputWeights = DoutputWeights.add(prevOutput.mltp(mass));
-            DhiddenWeights = DhiddenWeights.add(prevHidden.mltp(mass));
+            int setIndex = 0;
+            Matrix momHidden = new Matrix(in,hidden);
+            Matrix momOutput = new Matrix(hidden,out);
+            for(int set = 0; set < memory; set++){
+                setIndex = (resultsCount + 99 - set) % 100;
+                if(debug)System.out.println(resultsCount + " " + setIndex);
+                momHidden.add(results.get(setIndex).get(0));
+                momOutput.add(results.get(setIndex).get(1));
+            }
+            
+            momHidden = momHidden.mutate("div", memory);
+            momOutput = momOutput.mutate("div", memory);
+            DhiddenWeights = DhiddenWeights.add(momHidden.mutate("mltp",mass));
+            DoutputWeights = DoutputWeights.add(momOutput.mutate("mltp",mass));
         } else{
             trained = false;
         }
 
         //applying learning rate
-        DoutputWeights = DoutputWeights.mltp(rate);
-        DhiddenWeights = DhiddenWeights.mltp(rate);
+        DoutputWeights = DoutputWeights.mutate("mltp",rate);
+        DhiddenWeights = DhiddenWeights.mutate("mltp",rate);
         //applying weights
         outputWeights = outputWeights.sub(DoutputWeights);
         hiddenWeights = hiddenWeights.sub(DhiddenWeights);
         
         //adding results to results array
         ArrayList singleResult = new ArrayList(){{
-            add(DoutputWeights.clone());
             add(DhiddenWeights.clone());
+            add(DoutputWeights.clone());
             add(error);
         }};
         results.set(resultsCount, singleResult);

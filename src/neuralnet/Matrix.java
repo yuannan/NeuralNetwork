@@ -181,23 +181,20 @@ public class Matrix {
         
     }
     
-    //integer multiplication -- Tested working
-    public Matrix mltp(double in){
-        Matrix mRes = new Matrix(this.self.clone());
-        for(int row = 0; row < mRes.rows; row++){
-            for(int col = 0; col < mRes.cols; col++){
-                mRes.set(row, col, (mRes.get(row, col)*in));
-            }
-        }
-        return mRes;
+    //new wrapper for mutate function for legacy support
+    public Matrix mutate(String in, double modIn){
+        return this.mutateToMaths(in, modIn);
     }
     
-    //mutates all members of the current matrix with a maths method -- Tested working
     public Matrix mutate(String in){
+        return this.mutateToMaths(in, 0);
+    }
+    
+    public Matrix mutateToMaths(String in, double modIn){
         Matrix mRes = new Matrix(self);
         for(int row = 0; row < mRes.self.length; row++){
             for(int col = 0; col < mRes.self[0].length; col++){
-                mRes.set(row, col, Maths.operation(mRes.self[row][col],in) );
+                mRes.set(row, col, Maths.operation(in, mRes.self[row][col], modIn));
             }
         }
         

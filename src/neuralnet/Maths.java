@@ -14,23 +14,38 @@ import java.io.IOException;
  * @author blakk
  */
 public class Maths {
-    public static double operation(double dbIn, String operation){
+    public static double operation(String operation, double valueIn, double modIn){
+        return Maths.operate(operation, valueIn, modIn);
+    }
+    
+    public static double operation(String operation, double valueIn){
+        return Maths.operate(operation, valueIn, 0);
+    }
+    
+    public static double operate(String operation, double valueIn, double modIn){
         double result;
         switch(operation){
             case "double":
-                result = dbIn * 2;
+                result = valueIn * 2;
                 break;
             case "danny":
-                result = 1/dbIn;
+                result = 1/valueIn;
                 break;
             case "act": //the logistic function of 1/(1+ e^-x)
-                result = 1/(1+ Math.exp(-dbIn));
+                result = 1/(1+ Math.exp(-valueIn));
                 break;
             case "actD": // act diff
-                double act = 1/(1+ Math.exp(-dbIn));
+                double act = 1/(1+ Math.exp(-valueIn));
                 result =  act * (1 -  act);
+                break;
+            case "mltp":
+                result = valueIn * modIn;
+                break;
+            case "div":
+                result = valueIn / modIn;
+                break;
             default:
-                result = dbIn;
+                result = valueIn;
                 break;
         }
         

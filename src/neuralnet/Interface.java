@@ -25,7 +25,7 @@ import java.util.Date;
 public class Interface extends javax.swing.JFrame {
     //init network size
     int inputNodes = 40;
-    int hiddenNodes = 50;
+    int hiddenNodes = 100;
     int outputNodes = 3;
     //init global vars
     double output[] = new double[outputNodes];
@@ -165,7 +165,7 @@ public class Interface extends javax.swing.JFrame {
 
         massLabel.setText("Mass");
 
-        massInput.setText("0.03");
+        massInput.setText("0.05");
 
         outputFileButton.setText("Output Path");
         outputFileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -380,7 +380,7 @@ public class Interface extends javax.swing.JFrame {
         } else{
             net.train(inputDoubleData, inputOutputData, rate, mass);
         }
-        updateOutputs();        
+        updateOutputs();
     }//GEN-LAST:event_trainButtonActionPerformed
 
     public void initTrainingSets(){
@@ -520,12 +520,13 @@ public class Interface extends javax.swing.JFrame {
     public void updateOutputs(){
         output = net.output;
         error = net.error;
-        output0.setText(String.valueOf(output[0]));
-        output1.setText(String.valueOf(output[1]));
-        output2.setText(String.valueOf(output[2]));
-        error0.setText(String.valueOf(error[0]));
-        error1.setText(String.valueOf(error[1]));
-        error2.setText(String.valueOf(error[2]));
+        
+        javax.swing.JTextField[] outputFields = {output0, output1, output2};
+        javax.swing.JTextField[] errorFields = {error0, error1, error2};
+        for(int i = 0; i < outputNodes; i++){
+            outputFields[i].setText(String.valueOf(output[i]));
+            errorFields[i].setText(String.valueOf(error[i]));
+        }
     }
     
     public double[] charsToDouble(char[] inputChars){
