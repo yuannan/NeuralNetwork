@@ -63,12 +63,12 @@ public class Maths {
         return out;
     }
     
-    public static double[][] fillRandom(int rows, int cols){
+    public static double[][] fillRandom2DArray(int rows, int cols){
         double[][] ranArray = new double[rows][cols];
                 
         for(int row = 0; row < rows; row++){
             for(int col = 0; col < cols; col++){
-                ranArray[row][col] = Math.random()-0.5;
+                ranArray[row][col] = (Math.random() - 0.5) * 2;
                 //System.out.println("row: "+ row + " col: "+ col+" value: " + ranArray[row][col]);
             }
         }

@@ -36,12 +36,7 @@ public class Matrix {
         rows = self.length;
         cols = self[0].length;
     }
-    
-    @Override
-    public Matrix clone(){
-        return new Matrix(self);
-    }
-    
+        
     //inits a matrix from a filename
     public Matrix(String filename){
         try{
@@ -244,4 +239,10 @@ public class Matrix {
         }
         return output;
     }
+    
+    @Override
+    public Matrix clone(){
+        return new Matrix(self);
+    }
+    
 }
