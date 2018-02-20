@@ -6,8 +6,9 @@ Should be multiplatform but development is all done on Arch Linux under GNOME.
 All code is written by hand with minimal external libs, if any.
 Useage of the built in Java libs includes but not limited to ArrayList, FileWriter and FileReader.
 
-Sets for words starting from 0 should be English, Chinese and German.
-Your own word lists can be used if in the same format.
+I've included 3 word lists sourced from various places on the internet. If you want me to remove or credit you just gimme a shout.
+The lists are in standard ASCII.
+Your own word lists can be used if it is in the same format.
 
 A precompile version can be found in /dist.
 
