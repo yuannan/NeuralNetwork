@@ -30,3 +30,10 @@ the projects runtime path.
 in the Projects window and choose Properties. Then click Run and enter the
 class name in the Main Class field. Alternatively, you can manually type the
 class name in the manifest Main-Class element.
+
+
+DEV NOTE:
+
+Hello, 
+
+yuannan here. This will probably be the final build of this project. You will need to run this with the word lists in the same folder. If you want to export some weights make a folder called "weights".
