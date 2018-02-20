@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 
 public class NeuralNet {
-    static String version = "1.2.1";
+    static String version = "1.2.2";
     
     public static void main(String[] args) {
         Interface face = new Interface();

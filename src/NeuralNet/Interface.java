@@ -23,33 +23,38 @@ import java.util.Date;
 
 
 public class Interface extends javax.swing.JFrame {
-    //init network size
+    //init network sizes
     int inputNodes = 40;
     int hiddenNodes = 100;
     int outputNodes = 3;
     //init global vars
     double output[] = new double[outputNodes];
     double error[] = new double[outputNodes];
+    //init filing systems
+    String filename;
+    String[] fileStringNames = {"hiddenWeights", "outputWeights", "inputBias", "hiddenBias", "outputBias"};
+    String[] fileInputPaths = new String[outputNodes];
     //init training arrays
     char[] inputCharData = new char[inputNodes];
     double[] inputDoubleData = new double[inputNodes];
     double[] inputOutputData =  new double[outputNodes];
     //init training rates
     double rate;
+    double biasRate;
     double mass;
-    //init global input feilds
+    //init global input fields
     String messageBoxString;
-    String hiddenFileBoxString;
-    String outputFileBoxString;
     //init global training sets
     ArrayList<double[]> trainingInput = new ArrayList();
     ArrayList<double[]> trainingOutput = new ArrayList();
     
     //init new network
-    Network net = new Network(inputNodes,hiddenNodes,outputNodes);
+    Network net;
     
     public Interface() {
         initComponents();
+        this.updateInputs();
+        net = new Network(inputNodes,hiddenNodes,outputNodes);
     }
 
     /**
@@ -61,67 +66,63 @@ public class Interface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        inputLabel = new javax.swing.JLabel();
-        inputWord = new javax.swing.JTextField();
-        outputLabel = new javax.swing.JLabel();
-        output0 = new javax.swing.JTextField();
-        errorLabel = new javax.swing.JLabel();
-        error0 = new javax.swing.JTextField();
-        calcButton = new javax.swing.JButton();
         trainingHeaderLabel = new javax.swing.JLabel();
         newNetworkButton = new javax.swing.JButton();
-        trainButton = new javax.swing.JButton();
-        outputInputLabel = new javax.swing.JLabel();
         messageLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         messageBox = new javax.swing.JTextArea();
-        dumpButton = new javax.swing.JButton();
-        autodataCheckbox = new javax.swing.JCheckBox();
-        roundsInput = new javax.swing.JTextField();
         trainingInputLabel = new javax.swing.JLabel();
-        rateInputLabel = new javax.swing.JLabel();
-        rateInput = new javax.swing.JTextField();
         massLabel = new javax.swing.JLabel();
-        massInput = new javax.swing.JTextField();
-        outputFileButton = new javax.swing.JButton();
-        hiddenFileButton = new javax.swing.JButton();
-        output1 = new javax.swing.JTextField();
-        error1 = new javax.swing.JTextField();
-        inputFileSet0Path = new javax.swing.JTextField();
-        outputFileBox = new javax.swing.JTextField();
-        hiddenFileBox = new javax.swing.JTextField();
-        inputIndexBox = new javax.swing.JTextField();
-        output2 = new javax.swing.JTextField();
-        error2 = new javax.swing.JTextField();
-        inputFileSet1Path = new javax.swing.JTextField();
-        inputFileSet2Path = new javax.swing.JTextField();
         findSizeButton = new javax.swing.JButton();
         sizeOutputBox = new javax.swing.JTextField();
         trainingCountButton = new javax.swing.JButton();
         trainingCountOutputBox = new javax.swing.JTextField();
+        inputPanel = new javax.swing.JPanel();
+        inputLabel = new javax.swing.JLabel();
+        inputWord = new javax.swing.JTextField();
+        languageIndexComboBox = new javax.swing.JComboBox<>();
+        langIndexLabel = new javax.swing.JLabel();
+        rateInputLabel = new javax.swing.JLabel();
+        rateInput = new javax.swing.JTextField();
+        biasRateInput = new javax.swing.JTextField();
+        biasRateInputLabel = new javax.swing.JLabel();
+        massInputLabel = new javax.swing.JLabel();
+        massInput = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        actionPanel = new javax.swing.JPanel();
+        trainButton = new javax.swing.JButton();
+        roundsInput = new javax.swing.JTextField();
+        autodataCheckbox = new javax.swing.JCheckBox();
+        calcButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        inputFileSet2Path = new javax.swing.JTextField();
+        inputFileSet1Path = new javax.swing.JTextField();
+        inputFileSet0Path = new javax.swing.JTextField();
+        importButton = new javax.swing.JButton();
+        filenameBox = new javax.swing.JTextField();
+        exportButton = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        outputLabel = new javax.swing.JLabel();
+        errorLabel = new javax.swing.JLabel();
+        output0 = new javax.swing.JTextField();
+        error0 = new javax.swing.JTextField();
+        output1 = new javax.swing.JTextField();
+        error1 = new javax.swing.JTextField();
+        output2 = new javax.swing.JTextField();
+        error2 = new javax.swing.JTextField();
+        lang0OutputLabel = new javax.swing.JLabel();
+        lang1OutputLabel = new javax.swing.JLabel();
+        lang2OutputLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        updateOutputsButton = new javax.swing.JButton();
+        updateInputsButton = new javax.swing.JButton();
+        outputNodesBox = new javax.swing.JTextField();
+        hiddenNodesBox = new javax.swing.JTextField();
+        inputNodesBox = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        inputLabel.setText("Input");
-
-        inputWord.setText("word");
-
-        outputLabel.setText("Output");
-
-        output0.setText("output");
-
-        errorLabel.setText("Error");
-
-        error0.setText("error");
-
-        calcButton.setText("Calculate");
-        calcButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calcButtonActionPerformed(evt);
-            }
-        });
-
-        trainingHeaderLabel.setText("Training");
+        trainingHeaderLabel.setText("TRAINING");
 
         newNetworkButton.setText("NEW NETWORK");
         newNetworkButton.addActionListener(new java.awt.event.ActionListener() {
@@ -130,35 +131,43 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
-        trainButton.setText("Train");
-        trainButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trainButtonActionPerformed(evt);
-            }
-        });
-
-        outputInputLabel.setText("Output");
-
         messageLabel.setText("Message: ");
 
-        messageBox.setColumns(20);
+        messageBox.setColumns(13);
+        messageBox.setFont(new java.awt.Font("Dialog", 0, 48)); // NOI18N
         messageBox.setRows(5);
         jScrollPane2.setViewportView(messageBox);
 
-        dumpButton.setText("DUMP Weights");
-        dumpButton.addActionListener(new java.awt.event.ActionListener() {
+        trainingInputLabel.setText("INPUTS");
+
+        findSizeButton.setText("Amount of Weights");
+        findSizeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dumpButtonActionPerformed(evt);
+                findSizeButtonActionPerformed(evt);
             }
         });
 
-        autodataCheckbox.setText("autoData");
+        trainingCountButton.setText("Times Trained");
+        trainingCountButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trainingCountButtonActionPerformed(evt);
+            }
+        });
 
-        roundsInput.setText("1000");
+        inputLabel.setText("Word");
 
-        trainingInputLabel.setText("TRAINING INPUTS");
+        inputWord.setText("word");
 
-        rateInputLabel.setText("Rate");
+        languageIndexComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Language 1", "Language 2", "Language 3"}));
+        languageIndexComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                languageIndexComboBoxActionPerformed(evt);
+            }
+        });
+
+        langIndexLabel.setText("Language Index");
+
+        rateInputLabel.setText("General Learning Rate");
 
         rateInput.setText("0.01");
         rateInput.addActionListener(new java.awt.event.ActionListener() {
@@ -167,36 +176,187 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
-        massLabel.setText("Mass");
+        biasRateInput.setText("0.05");
+        biasRateInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                biasRateInputActionPerformed(evt);
+            }
+        });
+
+        biasRateInputLabel.setText("Bias Learning Rate");
+
+        massInputLabel.setText("Momentum Learning Rate");
 
         massInput.setText("0.05");
-
-        outputFileButton.setText("Output Path");
-        outputFileButton.addActionListener(new java.awt.event.ActionListener() {
+        massInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                outputFileButtonActionPerformed(evt);
+                massInputActionPerformed(evt);
             }
         });
 
-        hiddenFileButton.setText("Hidden Path");
-        hiddenFileButton.addActionListener(new java.awt.event.ActionListener() {
+        javax.swing.GroupLayout inputPanelLayout = new javax.swing.GroupLayout(inputPanel);
+        inputPanel.setLayout(inputPanelLayout);
+        inputPanelLayout.setHorizontalGroup(
+            inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inputPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(inputLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(langIndexLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rateInputLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(massInputLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(biasRateInputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(inputWord)
+                    .addComponent(rateInput)
+                    .addComponent(biasRateInput)
+                    .addComponent(massInput)
+                    .addComponent(languageIndexComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        inputPanelLayout.setVerticalGroup(
+            inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inputPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputLabel)
+                    .addComponent(inputWord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(langIndexLabel)
+                    .addComponent(languageIndexComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rateInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rateInputLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(biasRateInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(biasRateInputLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(massInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(massInputLabel)))
+        );
+
+        jLabel1.setText("OUTPUTS");
+
+        trainButton.setText("TRAIN");
+        trainButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hiddenFileButtonActionPerformed(evt);
+                trainButtonActionPerformed(evt);
             }
         });
 
-        output1.setText("output");
+        roundsInput.setText("1000");
 
-        error1.setText("error");
+        autodataCheckbox.setText("file mode");
 
-        inputFileSet0Path.setText("set0.txt");
+        calcButton.setText("Calculate");
+        calcButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calcButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout actionPanelLayout = new javax.swing.GroupLayout(actionPanel);
+        actionPanel.setLayout(actionPanelLayout);
+        actionPanelLayout.setHorizontalGroup(
+            actionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(autodataCheckbox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(roundsInput)
+            .addComponent(trainButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(calcButton, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+        );
+        actionPanelLayout.setVerticalGroup(
+            actionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(actionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(calcButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(trainButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(roundsInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(autodataCheckbox))
+        );
+
+        inputFileSet2Path.setText("german");
+
+        inputFileSet1Path.setText("chinese");
+
+        inputFileSet0Path.setText("english");
         inputFileSet0Path.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputFileSet0PathActionPerformed(evt);
             }
         });
 
-        inputIndexBox.setText("0");
+        importButton.setText("Import");
+        importButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                importButtonActionPerformed(evt);
+            }
+        });
+
+        exportButton.setText("Export");
+        exportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inputFileSet0Path, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(importButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(inputFileSet1Path)
+                    .addComponent(filenameBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inputFileSet2Path, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputFileSet2Path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputFileSet1Path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputFileSet0Path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(importButton)
+                    .addComponent(filenameBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exportButton))
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+
+        outputLabel.setText("Possibility");
+
+        errorLabel.setText("Cost/Error Function");
+
+        output0.setText("output");
+
+        error0.setText("error");
+
+        output1.setText("output");
+        output1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                output1ActionPerformed(evt);
+            }
+        });
+
+        error1.setText("error");
 
         output2.setText("output");
         output2.addActionListener(new java.awt.event.ActionListener() {
@@ -207,180 +367,194 @@ public class Interface extends javax.swing.JFrame {
 
         error2.setText("error");
 
-        inputFileSet1Path.setText("set1.txt");
+        lang0OutputLabel.setText("lang0");
 
-        inputFileSet2Path.setText("set2.txt");
+        lang1OutputLabel.setText("lang1");
 
-        findSizeButton.setText("Size");
-        findSizeButton.addActionListener(new java.awt.event.ActionListener() {
+        lang2OutputLabel.setText("lang2");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(outputLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(output0, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(output1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(output2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(error0, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(error1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(error2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lang0OutputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lang1OutputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lang2OutputLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lang0OutputLabel)
+                    .addComponent(lang1OutputLabel)
+                    .addComponent(lang2OutputLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(output0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(output1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(output2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outputLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(error0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(error1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(error2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(errorLabel))
+                .addGap(0, 11, Short.MAX_VALUE))
+        );
+
+        jLabel2.setText("TOOLS");
+
+        updateOutputsButton.setText("Update Outputs");
+        updateOutputsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                findSizeButtonActionPerformed(evt);
+                updateOutputsButtonActionPerformed(evt);
             }
         });
 
-        trainingCountButton.setText("Trained");
-        trainingCountButton.addActionListener(new java.awt.event.ActionListener() {
+        updateInputsButton.setText("Update Inputs");
+        updateInputsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trainingCountButtonActionPerformed(evt);
+                updateInputsButtonActionPerformed(evt);
             }
         });
+
+        outputNodesBox.setText("3");
+
+        hiddenNodesBox.setText("100");
+
+        inputNodesBox.setText("40");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(trainingInputLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(trainingHeaderLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(74, 74, 74)
+                                                .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(actionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(1169, 1169, 1169)
+                                        .addComponent(massLabel)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addComponent(messageLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(trainingInputLabel)
-                            .addComponent(inputLabel)
-                            .addComponent(rateInputLabel)
-                            .addComponent(outputLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(massLabel)
-                                    .addComponent(errorLabel)
-                                    .addComponent(outputInputLabel))
-                                .addGap(24, 24, 24)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(rateInput, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(massInput, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(calcButton))
-                                            .addComponent(inputWord, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(inputIndexBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                                        .addComponent(trainButton))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(error0, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(output0, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(error1)
-                                            .addComponent(output1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(dumpButton)
-                                    .addComponent(newNetworkButton))
+                                    .addComponent(sizeOutputBox)
+                                    .addComponent(trainingCountOutputBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(hiddenFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(hiddenFileBox))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(outputFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(outputFileBox))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(trainingHeaderLabel)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(autodataCheckbox)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(roundsInput, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(inputFileSet0Path, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(inputFileSet1Path, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(inputFileSet2Path, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 80, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(error2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(output2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(trainingCountOutputBox, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                    .addComponent(sizeOutputBox))
+                                    .addComponent(trainingCountButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(findSizeButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(updateInputsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(findSizeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(trainingCountButton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))))
+                                .addComponent(updateOutputsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(newNetworkButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(inputNodesBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(hiddenNodesBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(outputNodesBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(trainingInputLabel)
-                            .addComponent(trainingHeaderLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(inputWord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputLabel)
-                            .addComponent(autodataCheckbox)
-                            .addComponent(roundsInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputFileSet0Path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputFileSet1Path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputFileSet2Path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(trainButton))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(outputInputLabel)
-                            .addComponent(inputIndexBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rateInputLabel)
-                            .addComponent(rateInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(massInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(calcButton))
-                            .addComponent(massLabel)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dumpButton)
-                            .addComponent(outputFileButton)
-                            .addComponent(outputFileBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(newNetworkButton)
-                            .addComponent(hiddenFileButton)
-                            .addComponent(hiddenFileBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(outputLabel)
-                    .addComponent(output0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(output1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(output2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(findSizeButton)
-                    .addComponent(sizeOutputBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(trainingInputLabel)
+                    .addComponent(trainingHeaderLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(errorLabel)
-                    .addComponent(error0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(error1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(error2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(trainingCountButton)
-                        .addComponent(trainingCountOutputBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                    .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(actionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(messageLabel)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(massLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(findSizeButton)
+                                .addComponent(sizeOutputBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(trainingCountButton)
+                                .addComponent(trainingCountOutputBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(updateOutputsButton)
+                                .addComponent(updateInputsButton))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(newNetworkButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(outputNodesBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(hiddenNodesBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inputNodesBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel2)))
+                    .addComponent(messageLabel))
+                .addContainerGap())
         );
 
         pack();
@@ -388,11 +562,8 @@ public class Interface extends javax.swing.JFrame {
 
     private void newNetworkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newNetworkButtonActionPerformed
         // TODO add your handling code here:
-        if(!hiddenFileBoxString.equals("") && !outputFileBoxString.equals("")){
-            net = new Network(new Matrix(hiddenFileBoxString), new Matrix(outputFileBoxString), inputNodes, hiddenNodes, outputNodes);
-        } else{
-            net = new Network(inputNodes, hiddenNodes,outputNodes);
-        }
+        this.updateInputs();
+        net = new Network(inputNodes, hiddenNodes,outputNodes);
     }//GEN-LAST:event_newNetworkButtonActionPerformed
 
     private void calcButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcButtonActionPerformed
@@ -407,10 +578,10 @@ public class Interface extends javax.swing.JFrame {
         if(autodataCheckbox.isSelected()){
             this.initTrainingSets();
             for(int set = 0; set < trainingInput.size(); set++ ){
-                net.train(trainingInput.get(set), trainingOutput.get(set), rate, mass);
+                net.train(trainingInput.get(set), trainingOutput.get(set), rate, biasRate, mass);
             }
         } else{
-            net.train(inputDoubleData, inputOutputData, rate, mass);
+            net.train(inputDoubleData, inputOutputData, rate, biasRate, mass);
         }
         updateOutputs();
     }//GEN-LAST:event_trainButtonActionPerformed
@@ -454,43 +625,46 @@ public class Interface extends javax.swing.JFrame {
         
     }
     
-    private void dumpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dumpButtonActionPerformed
-        // TODO add your handling code here:
-        String hiddenWeightsString = net.hiddenWeights.debugReturn();
-        String outputWeightsString = net.outputWeights.debugReturn();
-        messageBox.setText(hiddenWeightsString+outputWeightsString);
+    private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportButtonActionPerformed
+        // getting the dump as strings
+        String[] outputStrings = {net.hiddenWeights.debugReturn(), net.outputWeights.debugReturn(), net.bInput.debugReturn(), net.bHidden.debugReturn(), net.bOutput.debugReturn()};
+        
         //init current time
         DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
         Date dateobj = new Date();
-        String timestamp = df.format(dateobj);
-        //init file writer
+        String filename = filenameBox.getText();
+        String filenameAppendix = (filename.equals(""))? df.format(dateobj) : filename;
+        
+        //writing files
         try{
-            BufferedWriter bwH = new BufferedWriter(new FileWriter("weights/hidden"+timestamp));
-            BufferedWriter bwO = new BufferedWriter(new FileWriter("weights/output"+timestamp));
-            bwH.write(hiddenWeightsString);
-            bwO.write(outputWeightsString);
-            bwH.close();
-            bwO.close();
+            String dumpString = "";
+            for(int s = 0; s < outputStrings.length; s++){
+                dumpString += "\n" + fileStringNames[s] + "\n" + outputStrings[s] + "\n";
+                BufferedWriter bw = new BufferedWriter(new FileWriter("weights/"+fileStringNames[s]+filenameAppendix));
+                bw.write(outputStrings[s]);
+                bw.close();
+            }
+            messageBox.setText(dumpString);
         } catch (IOException e){
             e.printStackTrace();
         }
-    }//GEN-LAST:event_dumpButtonActionPerformed
+    }//GEN-LAST:event_exportButtonActionPerformed
 
     private void rateInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rateInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rateInputActionPerformed
 
-    private void outputFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputFileButtonActionPerformed
-        //updates outputWeights with the new file
+    private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
+        //new network with weights given by the timestamp
         updateInputs();
-        net.outputWeights = new Matrix(messageBoxString);
-    }//GEN-LAST:event_outputFileButtonActionPerformed
-
-    private void hiddenFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hiddenFileButtonActionPerformed
-        //updates hiddenWeights with the new file
-        updateInputs();
-        net.hiddenWeights = new Matrix(messageBoxString);
-    }//GEN-LAST:event_hiddenFileButtonActionPerformed
+        ArrayList<Matrix> inputMatricies = new ArrayList();
+        for(int s = 0; s < fileStringNames.length; s++){
+            Matrix tempMatrix = new Matrix("weights/"+fileStringNames[s]+filename);
+            inputMatricies.add(tempMatrix);
+        }
+        
+        net = new Network(inputNodes, hiddenNodes, outputNodes, inputMatricies.get(0), inputMatricies.get(1), inputMatricies.get(2), inputMatricies.get(3), inputMatricies.get(4));
+    }//GEN-LAST:event_importButtonActionPerformed
 
     private void output2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_output2ActionPerformed
         // TODO add your handling code here:
@@ -505,6 +679,7 @@ public class Interface extends javax.swing.JFrame {
         int amountOfWeights = 0;
         amountOfWeights += inputNodes * hiddenNodes;
         amountOfWeights += hiddenNodes * outputNodes;
+        amountOfWeights += inputNodes + hiddenNodes + outputNodes;
         sizeOutputBox.setText(String.valueOf(amountOfWeights));
     }//GEN-LAST:event_findSizeButtonActionPerformed
 
@@ -513,6 +688,32 @@ public class Interface extends javax.swing.JFrame {
         int trainingCount = net.getTrainingCount();
         trainingCountOutputBox.setText(String.valueOf(trainingCount));
     }//GEN-LAST:event_trainingCountButtonActionPerformed
+
+    private void massInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_massInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_massInputActionPerformed
+
+    private void biasRateInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biasRateInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_biasRateInputActionPerformed
+
+    private void languageIndexComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageIndexComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_languageIndexComboBoxActionPerformed
+
+    private void updateOutputsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateOutputsButtonActionPerformed
+        // TODO add your handling code here:
+        this.updateOutputs();
+    }//GEN-LAST:event_updateOutputsButtonActionPerformed
+
+    private void updateInputsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateInputsButtonActionPerformed
+        // TODO add your handling code here:
+        this.updateInputs();
+    }//GEN-LAST:event_updateInputsButtonActionPerformed
+
+    private void output1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_output1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_output1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -550,20 +751,39 @@ public class Interface extends javax.swing.JFrame {
     }
     
     public void updateInputs(){
+        //updating filing paths
+        fileInputPaths = new String[] {inputFileSet0Path.getText(), inputFileSet1Path.getText(), inputFileSet2Path.getText()};
+        javax.swing.JLabel[] langOutputLables = {lang0OutputLabel, lang1OutputLabel, lang2OutputLabel};
+        languageIndexComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(fileInputPaths));        
+        for(int l = 0; l < fileInputPaths.length; l++){
+            langOutputLables[l].setText(fileInputPaths[l]);
+        }
+        
+        //update network sizing
+        inputNodes = Integer.valueOf(inputNodesBox.getText());
+        hiddenNodes = Integer.valueOf(hiddenNodesBox.getText());
+        outputNodes = Integer.valueOf(outputNodesBox.getText());
+        
+        //updating input word and turning it into a double array
         String inputWordString = inputWord.getText().toLowerCase();
         inputCharData = inputWordString.toCharArray();
         inputDoubleData = charsToDouble(inputCharData);
         
-        int outputIndex = Integer.valueOf(inputIndexBox.getText());
+        //updating language index and the input for predicted output data
+        int outputIndex = languageIndexComboBox.getSelectedIndex();
         for(int node = 0; node < outputNodes; node++){
             inputOutputData[node] = (node == outputIndex)? 1 : 0;
         }
         
+        //updating training constants 
         rate = Double.valueOf(rateInput.getText());
+        biasRate = Double.valueOf(biasRateInput.getText());
         mass = Double.valueOf(massInput.getText());
+        
+        
+        //updating required strings
         messageBoxString = messageBox.getText();
-        hiddenFileBoxString = hiddenFileBox.getText();
-        outputFileBoxString = outputFileBox.getText();
+        filename = filenameBox.getText();
     }
     
     public void updateOutputs(){
@@ -572,10 +792,19 @@ public class Interface extends javax.swing.JFrame {
         
         javax.swing.JTextField[] outputFields = {output0, output1, output2};
         javax.swing.JTextField[] errorFields = {error0, error1, error2};
+        double max = 0;
+        int maxIndex = 0;
         for(int i = 0; i < outputNodes; i++){
             outputFields[i].setText(String.valueOf(output[i]));
             errorFields[i].setText(String.valueOf(error[i]));
+            
+            if(output[i] > max){
+                max = output[i];
+                maxIndex = i;
+            }
         }
+        
+        messageBox.setText(fileInputPaths[maxIndex]);
     }
     
     public double[] charsToDouble(char[] inputChars){
@@ -595,24 +824,39 @@ public class Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel actionPanel;
     private javax.swing.JCheckBox autodataCheckbox;
+    private javax.swing.JTextField biasRateInput;
+    private javax.swing.JLabel biasRateInputLabel;
     private javax.swing.JButton calcButton;
-    private javax.swing.JButton dumpButton;
     private javax.swing.JTextField error0;
     private javax.swing.JTextField error1;
     private javax.swing.JTextField error2;
     private javax.swing.JLabel errorLabel;
+    private javax.swing.JButton exportButton;
+    private javax.swing.JTextField filenameBox;
     private javax.swing.JButton findSizeButton;
-    private javax.swing.JTextField hiddenFileBox;
-    private javax.swing.JButton hiddenFileButton;
+    private javax.swing.JTextField hiddenNodesBox;
+    private javax.swing.JButton importButton;
     private javax.swing.JTextField inputFileSet0Path;
     private javax.swing.JTextField inputFileSet1Path;
     private javax.swing.JTextField inputFileSet2Path;
-    private javax.swing.JTextField inputIndexBox;
     private javax.swing.JLabel inputLabel;
+    private javax.swing.JTextField inputNodesBox;
+    private javax.swing.JPanel inputPanel;
     private javax.swing.JTextField inputWord;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lang0OutputLabel;
+    private javax.swing.JLabel lang1OutputLabel;
+    private javax.swing.JLabel lang2OutputLabel;
+    private javax.swing.JLabel langIndexLabel;
+    private javax.swing.JComboBox<String> languageIndexComboBox;
     private javax.swing.JTextField massInput;
+    private javax.swing.JLabel massInputLabel;
     private javax.swing.JLabel massLabel;
     private javax.swing.JTextArea messageBox;
     private javax.swing.JLabel messageLabel;
@@ -620,10 +864,8 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JTextField output0;
     private javax.swing.JTextField output1;
     private javax.swing.JTextField output2;
-    private javax.swing.JTextField outputFileBox;
-    private javax.swing.JButton outputFileButton;
-    private javax.swing.JLabel outputInputLabel;
     private javax.swing.JLabel outputLabel;
+    private javax.swing.JTextField outputNodesBox;
     private javax.swing.JTextField rateInput;
     private javax.swing.JLabel rateInputLabel;
     private javax.swing.JTextField roundsInput;
@@ -633,5 +875,7 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JTextField trainingCountOutputBox;
     private javax.swing.JLabel trainingHeaderLabel;
     private javax.swing.JLabel trainingInputLabel;
+    private javax.swing.JButton updateInputsButton;
+    private javax.swing.JButton updateOutputsButton;
     // End of variables declaration//GEN-END:variables
 }

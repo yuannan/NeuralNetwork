@@ -23,110 +23,73 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="messageLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="trainingInputLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="inputLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="rateInputLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="outputLabel" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="massLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="errorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="outputInputLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="rateInput" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="massInput" min="-2" pref="50" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="calcButton" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="inputWord" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
-                                          <Component id="inputIndexBox" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="58" max="32767" attributes="0"/>
-                                      <Component id="trainButton" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="error0" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="output0" alignment="0" pref="170" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="error1" max="32767" attributes="0"/>
-                                          <Component id="output1" pref="170" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="dumpButton" min="-2" max="-2" attributes="0"/>
-                                  <Component id="newNetworkButton" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="hiddenFileButton" min="-2" pref="132" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="hiddenFileBox" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="outputFileButton" min="-2" pref="133" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="outputFileBox" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="trainingInputLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="trainingHeaderLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="trainingHeaderLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="autodataCheckbox" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="roundsInput" min="-2" pref="67" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                                              <Component id="inputPanel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="actionPanel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="inputFileSet0Path" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="inputFileSet1Path" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="inputFileSet2Path" min="-2" pref="80" max="-2" attributes="0"/>
+                                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                              </Group>
-                              <EmptySpace min="0" pref="80" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="error2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="output2" alignment="0" pref="170" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="1169" max="-2" attributes="0"/>
+                                      <Component id="massLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="messageLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="654" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="trainingCountOutputBox" pref="100" max="32767" attributes="0"/>
                                   <Component id="sizeOutputBox" max="32767" attributes="0"/>
+                                  <Component id="trainingCountOutputBox" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="findSizeButton" max="32767" attributes="0"/>
-                                  <Component id="trainingCountButton" pref="100" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="trainingCountButton" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="findSizeButton" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="updateInputsButton" min="-2" pref="200" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="updateOutputsButton" min="-2" pref="200" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="newNetworkButton" alignment="1" min="-2" pref="406" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="inputNodesBox" min="-2" pref="130" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="hiddenNodesBox" min="-2" pref="130" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="outputNodesBox" min="-2" pref="130" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -138,135 +101,70 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="trainingInputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="trainingHeaderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="inputWord" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="inputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="autodataCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="roundsInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="inputFileSet0Path" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="inputFileSet1Path" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="inputFileSet2Path" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="trainButton" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="outputInputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="inputIndexBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="rateInputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rateInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="massInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="calcButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="massLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="dumpButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="outputFileButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="outputFileBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="newNetworkButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="hiddenFileButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="hiddenFileBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="outputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="output0" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="output1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="output2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="findSizeButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="sizeOutputBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="trainingInputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="trainingHeaderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="errorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="error0" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="error1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="error2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                      <Component id="trainingCountButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="trainingCountOutputBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane2" pref="260" max="32767" attributes="0"/>
+                  <Component id="inputPanel" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="actionPanel" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="messageLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="massLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="findSizeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="sizeOutputBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="trainingCountButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="trainingCountOutputBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="updateOutputsButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="updateInputsButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="newNetworkButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="outputNodesBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="hiddenNodesBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="inputNodesBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="messageLabel" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="inputLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Input"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="inputWord">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="word"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="outputLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Output"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="output0">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="output"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="errorLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Error"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="error0">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="error"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="calcButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Calculate"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="calcButtonActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="trainingHeaderLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Training"/>
+        <Property name="text" type="java.lang.String" value="TRAINING"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="newNetworkButton">
@@ -276,19 +174,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newNetworkButtonActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="trainButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Train"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trainButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="outputInputLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Output"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="messageLabel">
       <Properties>
@@ -304,127 +189,25 @@
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="messageBox">
           <Properties>
-            <Property name="columns" type="int" value="20"/>
+            <Property name="columns" type="int" value="13"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="48" style="0"/>
+            </Property>
             <Property name="rows" type="int" value="5"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="dumpButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="DUMP Weights"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dumpButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="autodataCheckbox">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="autoData"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="roundsInput">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="1000"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="trainingInputLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="TRAINING INPUTS"/>
+        <Property name="text" type="java.lang.String" value="INPUTS"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="rateInputLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Rate"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="rateInput">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="0.01"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rateInputActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="massLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mass"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="massInput">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="0.05"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="outputFileButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Output Path"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="outputFileButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="hiddenFileButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Hidden Path"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hiddenFileButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="output1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="output"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="error1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="error"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="inputFileSet0Path">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="set0.txt"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputFileSet0PathActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="outputFileBox">
-    </Component>
-    <Component class="javax.swing.JTextField" name="hiddenFileBox">
-    </Component>
-    <Component class="javax.swing.JTextField" name="inputIndexBox">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="0"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="output2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="output"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="output2ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="error2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="error"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="inputFileSet1Path">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="set1.txt"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="inputFileSet2Path">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="set2.txt"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="findSizeButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Size"/>
+        <Property name="text" type="java.lang.String" value="Amount of Weights"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="findSizeButtonActionPerformed"/>
@@ -434,13 +217,450 @@
     </Component>
     <Component class="javax.swing.JButton" name="trainingCountButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Trained"/>
+        <Property name="text" type="java.lang.String" value="Times Trained"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trainingCountButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="trainingCountOutputBox">
+    </Component>
+    <Container class="javax.swing.JPanel" name="inputPanel">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="inputLabel" max="32767" attributes="0"/>
+                      <Component id="langIndexLabel" max="32767" attributes="0"/>
+                      <Component id="rateInputLabel" max="32767" attributes="0"/>
+                      <Component id="massInputLabel" max="32767" attributes="0"/>
+                      <Component id="biasRateInputLabel" min="-2" pref="200" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="inputWord" max="32767" attributes="0"/>
+                      <Component id="rateInput" alignment="0" max="32767" attributes="0"/>
+                      <Component id="biasRateInput" alignment="0" max="32767" attributes="0"/>
+                      <Component id="massInput" alignment="0" max="32767" attributes="0"/>
+                      <Component id="languageIndexComboBox" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="inputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputWord" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="langIndexLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="languageIndexComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="rateInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rateInputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="biasRateInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="biasRateInputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="massInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="massInputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="inputLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Word"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="inputWord">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="word"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="languageIndexComboBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Language 1&quot;, &quot;Language 2&quot;, &quot;Language 3&quot;})" type="code"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="languageIndexComboBoxActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="langIndexLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Language Index"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="rateInputLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="General Learning Rate"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="rateInput">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0.01"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rateInputActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="biasRateInput">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0.05"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="biasRateInputActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="biasRateInputLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Bias Learning Rate"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="massInputLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Momentum Learning Rate"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="massInput">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0.05"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="massInputActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="OUTPUTS"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JPanel" name="actionPanel">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="autodataCheckbox" alignment="0" max="32767" attributes="0"/>
+              <Component id="roundsInput" alignment="0" max="32767" attributes="0"/>
+              <Component id="trainButton" alignment="0" max="32767" attributes="0"/>
+              <Component id="calcButton" alignment="0" pref="316" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="calcButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="trainButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="roundsInput" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="autodataCheckbox" min="-2" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="trainButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="TRAIN"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trainButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="roundsInput">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="1000"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="autodataCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="file mode"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="calcButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Calculate"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="calcButtonActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="inputFileSet0Path" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="importButton" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="inputFileSet1Path" max="32767" attributes="0"/>
+                      <Component id="filenameBox" min="-2" pref="150" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="inputFileSet2Path" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="exportButton" min="-2" pref="150" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="inputFileSet2Path" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputFileSet1Path" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputFileSet0Path" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="importButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="filenameBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="exportButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="67" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JTextField" name="inputFileSet2Path">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="german"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="inputFileSet1Path">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="chinese"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="inputFileSet0Path">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="english"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputFileSet0PathActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="importButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Import"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="importButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="filenameBox">
+        </Component>
+        <Component class="javax.swing.JButton" name="exportButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Export"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exportButtonActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="jPanel2">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="outputLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="errorLabel" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="output0" min="-2" pref="170" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="output1" min="-2" pref="170" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="output2" min="-2" pref="170" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="error0" min="-2" pref="170" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="error1" min="-2" pref="170" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="error2" min="-2" pref="170" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="lang0OutputLabel" min="-2" pref="170" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lang1OutputLabel" min="-2" pref="170" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lang2OutputLabel" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lang0OutputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lang1OutputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lang2OutputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="output0" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="output1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="output2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="outputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="error0" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="error1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="error2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="errorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="outputLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Possibility"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="errorLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cost/Error Function"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="output0">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="output"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="error0">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="error"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="output1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="output"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="output1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="error1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="error"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="output2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="output"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="output2ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="error2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="error"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lang0OutputLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="lang0"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lang1OutputLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="lang1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lang2OutputLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="lang2"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="TOOLS"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="updateOutputsButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update Outputs"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateOutputsButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="updateInputsButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update Inputs"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateInputsButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="outputNodesBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="3"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="hiddenNodesBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="100"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="inputNodesBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="40"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
