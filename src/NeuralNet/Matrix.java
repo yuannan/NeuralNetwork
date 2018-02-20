@@ -1,9 +1,4 @@
-package neuralnet;
-
-/**
- *
- * @author blakk
- */
+package NeuralNet;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -134,7 +129,7 @@ public class Matrix {
         return aRes;
     }
     
-    //takes 2 matricies together -- Tested working
+    //takes 2 matricies from each other -- Tested working
     public Matrix sub(Matrix aIn){
         Matrix aRes = new Matrix(self);
         if(aIn.rows == rows && aIn.cols == cols){

@@ -1,16 +1,7 @@
-package neuralnet;
-
-/**
- *
- * @author blakk
- */
-
-import java.util.Scanner;
-import java.util.ArrayList;
-
+package NeuralNet;
 
 public class NeuralNet {
-    static String version = "1.2.2";
+    static String version = "1.3.0";
     
     public static void main(String[] args) {
         Interface face = new Interface();

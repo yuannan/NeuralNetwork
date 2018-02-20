@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package neuralnet;
+package NeuralNet;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-/**
- *
- * @author blakk
- */
 public class Maths {
     public static double operation(String operation, double valueIn, double modIn){
         return Maths.operate(operation, valueIn, modIn);

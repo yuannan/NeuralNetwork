@@ -1,16 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package neuralnet;
+package NeuralNet;
 
-/**
- *
- * @author blakk
- */
-
-//imports
 import java.util.ArrayList;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
@@ -169,14 +158,14 @@ public class Interface extends javax.swing.JFrame {
 
         rateInputLabel.setText("General Learning Rate");
 
-        rateInput.setText("0.01");
+        rateInput.setText("0.001");
         rateInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rateInputActionPerformed(evt);
             }
         });
 
-        biasRateInput.setText("0.05");
+        biasRateInput.setText("0.005");
         biasRateInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 biasRateInputActionPerformed(evt);
@@ -187,7 +176,7 @@ public class Interface extends javax.swing.JFrame {
 
         massInputLabel.setText("Momentum Learning Rate");
 
-        massInput.setText("0.05");
+        massInput.setText("0.01");
         massInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 massInputActionPerformed(evt);
@@ -465,19 +454,16 @@ public class Interface extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(74, 74, 74)
-                                                .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(actionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(74, 74, 74)
+                                        .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(1169, 1169, 1169)
-                                        .addComponent(massLabel)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(actionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1169, 1169, 1169)
+                                .addComponent(massLabel))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(messageLabel)
@@ -751,13 +737,6 @@ public class Interface extends javax.swing.JFrame {
     }
     
     public void updateInputs(){
-        //updating filing paths
-        fileInputPaths = new String[] {inputFileSet0Path.getText(), inputFileSet1Path.getText(), inputFileSet2Path.getText()};
-        javax.swing.JLabel[] langOutputLables = {lang0OutputLabel, lang1OutputLabel, lang2OutputLabel};
-        languageIndexComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(fileInputPaths));        
-        for(int l = 0; l < fileInputPaths.length; l++){
-            langOutputLables[l].setText(fileInputPaths[l]);
-        }
         
         //update network sizing
         inputNodes = Integer.valueOf(inputNodesBox.getText());
@@ -774,6 +753,17 @@ public class Interface extends javax.swing.JFrame {
         for(int node = 0; node < outputNodes; node++){
             inputOutputData[node] = (node == outputIndex)? 1 : 0;
         }
+        
+        //updating filing paths
+        fileInputPaths = new String[] {inputFileSet0Path.getText(), inputFileSet1Path.getText(), inputFileSet2Path.getText()};
+        javax.swing.JLabel[] langOutputLables = {lang0OutputLabel, lang1OutputLabel, lang2OutputLabel};
+        languageIndexComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(fileInputPaths));        
+        for(int l = 0; l < fileInputPaths.length; l++){
+            langOutputLables[l].setText(fileInputPaths[l]);
+        }
+        
+        //setting back the language index
+        languageIndexComboBox.setSelectedIndex(outputIndex);
         
         //updating training constants 
         rate = Double.valueOf(rateInput.getText());

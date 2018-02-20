@@ -1,16 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package neuralnet;
+package NeuralNet;
 import java.util.ArrayList;
-
-/**
- *
- * @author blakk
- */
-
 
 public class Network {
     //settings up tracker
@@ -25,7 +14,7 @@ public class Network {
     //init constants
     Matrix hiddenWeights, outputWeights; //weights
     Matrix DhiddenWeights, DoutputWeights; //delta weights
-    Matrix inputLayer, hiddenIn, hiddenOut, outputIn, outputOut; //layer values
+    Matrix inputIn, inputOut, hiddenIn, hiddenOut, outputIn, outputOut; //layer values
     Matrix bInput, bHidden, bOutput; // bias values
     int inputNodes, hiddenNodes, outputNodes;
     
@@ -85,10 +74,11 @@ public class Network {
     
     public void compute(double[] inArray, double[] target){
         //input
-        inputLayer = (new Matrix(inArray)).add(bInput);
+        inputIn = new Matrix(inArray);
+        inputOut = (inputIn.add(bInput)).mutate("act");
                 
         //hidden
-        hiddenIn = inputLayer.mltp(hiddenWeights);
+        hiddenIn = inputOut.mltp(hiddenWeights);
         hiddenOut = (hiddenIn.add(bHidden)).mutate("act");
                 
         //output
@@ -97,11 +87,17 @@ public class Network {
         
         //debug outputs
         if(debug){
-            System.out.println("Weights");
+            System.out.println("Hidden and Output Weights");
             hiddenWeights.debugOutput();
             outputWeights.debugOutput();
-            System.out.println("Input");
-            inputLayer.debugOutput();
+            System.out.println("Input, Hidden and Output bias");
+            bInput.debugOutput();
+            bHidden.debugOutput();
+            bOutput.debugOutput();
+            System.out.println("Input in");
+            inputIn.debugOutput();
+            System.out.println("Input out");
+            inputOut.debugOutput();
             System.out.println("Hidden in");
             hiddenIn.debugOutput();
             System.out.println("Hidden act");
@@ -123,31 +119,37 @@ public class Network {
     public void train(double[] input, double[] target, double rate, double biasRate, double mass){
         this.compute(input, target);
         
-        for (int n = 0; n < outputNodes; n++){
-            if(debug)System.out.println("O: " + output[n] + " E: " + error[n]);
-            double dOdnO = output[n] - target[n];
-            double dnOdI = output[n] * (1 - output[n]);
-            double dOdI = dOdnO * dnOdI;
+        for (int outputNode = 0; outputNode < outputNodes; outputNode++){
+            if(debug)System.out.println("O: " + output[outputNode] + " E: " + error[outputNode]);
+            double dOdoO = output[outputNode] - target[outputNode];
+            double dnOdoI = output[outputNode] * (1 - output[outputNode]);
+            double dOdoI = dOdoO * dnOdoI;
             //updating bias for output
-            bOutput.inc(0,n,-(dOdI*biasRate));
+            bOutput.inc(0,outputNode,-(dOdoI*biasRate));
             
             //finding delta for each hidden -> output node
             for(int hiddenNode = 0; hiddenNode < hiddenNodes; hiddenNode++){
-                double dIdW = hiddenOut.get(0,hiddenNode);
-                double deltaH = dOdI*dIdW;
-                DoutputWeights.set(hiddenNode, n, deltaH);
+                double doIdhW = hiddenOut.get(0,hiddenNode);
+                double dOdhW = dOdoI*doIdhW;
+                DoutputWeights.set(hiddenNode, outputNode, dOdhW);
                 
-                double dIdHo = outputWeights.get(hiddenNode, 0);
-                double dHodHi = hiddenOut.get(0, hiddenNode) * (1 - hiddenOut.get(0, hiddenNode));
+                double doIdhO = outputWeights.get(hiddenNode, 0);
+                double dhOdhI = hiddenOut.get(0, hiddenNode) * (1 - hiddenOut.get(0, hiddenNode));
                 
-                bHidden.inc(0,hiddenNode,-(dOdI*dIdHo*dHodHi*biasRate));
+                double dOdhI = dOdoI*doIdhO*dhOdhI;                
+                bHidden.inc(0,hiddenNode,-(dOdhI*biasRate)); //hidden bias
                         
                 //finding delta for each input -> hidden node
                 for(int inputNode = 0; inputNode < inputNodes; inputNode++){
-                    double dHidw = inputLayer.get(0, inputNode);
-                    double deltaI = dOdI*dIdHo*dHodHi*dHidw;
-                    DhiddenWeights.set(inputNode,hiddenNode,deltaI);
-                    //bInput.inc(0,inputNode,-(*biasRate));              //updating the bias for inputs
+                    double dhIdiW = inputOut.get(0, inputNode);
+                    double dOdiW = dOdhI * dhIdiW;
+                    DhiddenWeights.set(inputNode,hiddenNode,dOdiW);
+                    
+                    double dhIdiO = hiddenWeights.get(inputNode, 0);
+                    double diOdiI = inputOut.get(0,inputNode) * (1 - inputOut.get(0,inputNode));
+                    
+                    double dOdiI = dOdhI * dhIdiO * diOdiI;
+                    bInput.inc(0,inputNode,-(dOdiI*biasRate));              //updating the bias for inputs
                 }
             }
         }
